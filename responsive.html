@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <a href="index.html" class="logo"><h1>Logo</h1></a>
+                <button class="navabar-toggle">=</button>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Pages</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+    <script src="js/jquery-min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".navabar-toggle").click(function(){
+                $("nav").toggleClass("slide");
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

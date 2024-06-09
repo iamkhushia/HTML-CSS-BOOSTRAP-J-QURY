@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>j--query</title>
+
+
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="css/headline.css">
+</head>
+<body>
+
+<!-- ==== Headline ===== -->
+        <div class="type-js headline">
+            <h1 class="text-js">Today I'm So Happy,,Wohhhhh!!!!</h1>   
+        </div> 
+
+<!-- ==== typer ==== -->
+<!-- <div id="slogan" data-text="Maybe we'll be stronger"></div> -->
+
+
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <script src="js/jquery-min.js"></script>
+
+<!--==== Headline =====  -->
+    <script>
+        function autoType(elementClass, typingSpeed){
+  var thhis = $(elementClass);
+  thhis.css({
+    "position": "relative",
+    "display": "inline-block"
+  });
+  thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+  thhis = thhis.find(".text-js");
+  var text = thhis.text().trim().split('');
+  var amntOfChars = text.length;
+  var newString = "";
+  thhis.text("|");
+  setTimeout(function(){
+    thhis.css("opacity",1);
+    thhis.prev().removeAttr("style");
+    thhis.text("");
+    for(var i = 0; i < amntOfChars; i++){
+      (function(i,char){
+        setTimeout(function() {        
+          newString += char;
+          thhis.text(newString);
+        },i*typingSpeed);
+      })(i+1,text[i]);
+    }
+  },1500);
+}
+
+$(document).ready(function(){
+  // Now to start autoTyping just call the autoType function with the 
+  // class of outer div
+  // The second paramter is the speed between each letter is typed.   
+  autoType(".type-js",200);
+});
+    </script>
+
+<!--==== Typer ====  -->
+<!-- <script>
+    (function($){
+
+$.fn.typer = function(options){
+
+    var defaults = $.extend({
+        search: '',
+        replace: [],
+        speed: 50,
+        delay: 2000
+    }, options);
+    
+    var bintext = function(length){
+        var text = '';
+        for(var $i = 0; $i<=length;$i++) {
+            text = text + Math.floor(Math.random() * 2)
+        }
+        return text;
+    };
+
+    this.each(function(){
+
+        var $this = $(this);
+        var $text = $this.data('text');
+        var position = 0;
+
+        var indexOf = $text.indexOf( defaults.search );
+        var normal = $text.substr(0, indexOf);
+        var changer = $text.substr(indexOf, $text.length);
+
+        defaults.replace.push(changer);
+
+        var interval = setInterval(function(){
+            var $bintext = '';
+
+            if( position == indexOf ) {
+
+                $bintext = bintext(changer.length-1);
+
+                $this.html( $text.substr(0, normal.length) );
+                $this.append('<span>' + $bintext + '</span>')
+
+            } else if( position > indexOf ) {
+
+
+                $bintext = bintext($text.length-1);
+
+                $this.delay(defaults.speed).find('span').html(
+                    changer.substring(0, position - indexOf) +
+                    $bintext.substring(position, ($bintext.length))
+                );
+
+            } else if( position < indexOf ) {
+
+                $bintext = bintext($text.length-1);
+
+                $this.delay(defaults.speed).html(
+                    normal.substring(0, position) +
+                    $bintext.substring(position, ($bintext.length))
+                );
+
+            }
+
+            if( position < $text.length ) {
+                position++;
+            } else {
+                clearInterval(interval);
+
+                var index = 0;
+                setInterval(function(){
+
+                    var position = 0;
+                    var newText = defaults.replace[index];
+
+                    var changeInterval = setInterval(function(){
+
+                        var $bintext = '';
+                        for(var $i = 0; $i<=newText.length-1;$i++) {
+                            $bintext = $bintext + Math.floor(Math.random() * 2)
+                        }
+
+                        $this.delay(defaults.speed).find('span').html(
+                            newText.substring(0, position) +
+                            $bintext.substring(position, ($bintext.length))
+                        );
+
+                        if( position < $text.length ) {
+                            position++;
+                        } else {
+                            clearInterval(changeInterval);
+                        }
+
+                    }, defaults.speed);
+
+                    if( index < defaults.replace.length-1 ) {
+                        index++;
+                    } else {
+                        index = 0;
+                    }
+                }, defaults.delay)
+
+
+            }
+        }, defaults.speed)
+
+    });
+
+}
+
+})(jQuery)
+
+$(function(){
+$('#slogan').typer({
+search: 'stronger',
+replace: ['powerful', 'larger', 'greater']
+})
+})
+</script> -->
+
+
+</body>
+</html>
